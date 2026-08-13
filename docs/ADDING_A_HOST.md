@@ -17,6 +17,7 @@ hosts/
 ├── slate.ts         # Slate (Random Labs)
 ├── cursor.ts        # Cursor
 ├── openclaw.ts      # OpenClaw (hybrid: config + adapter)
+├── antigravity.ts   # Antigravity (Google DeepMind Agent)
 └── index.ts         # Registry: imports all, derives Host type
 ```
 
