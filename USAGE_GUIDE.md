@@ -81,12 +81,23 @@ flowchart LR
 
 ## 🛠️ プロジェクトへの組み込み方法
 
-ご自身のWEBアプリ（例: `bontetsuHP` など）でチーム共有したい場合は、作成した `.gemini/skills/` の中身をプロジェクト直下の `.agents/skills/` にコピー・配置するだけで、リポジトリ単位でチーム全員が同じスキルを利用できるようになります。
+### 方法 A: シンボリックリンク（Junction）で置く場合（ローカル推奨）
+PowerShell で対象プロジェクトの直下（例: `bontetsuHP`）を開き、以下の 1 行を実行するだけでリンクを作成できます：
+
+```powershell
+New-Item -ItemType Junction -Path ".agents\skills" -Target "$env:USERPROFILE\dev\gstack\.gemini\skills" -Force
+```
+*(管理者権限なしで動作し、`gstack` 側の更新が自動的にプロジェクト側に反映されます)*
+
+---
+
+### 方法 B: 実体コピーで置く場合（チーム共有・Git管理推奨）
+作成した `.gemini/skills/` の中身をプロジェクト直下の `.agents/skills/` にコピーしてコミットします。
 
 ```text
 your-project/
 ├── .agents/
-│   └── skills/
+│   └── skills/          # シンボリックリンク または コピー配置
 │       ├── gstack-office-hours/
 │       ├── gstack-review/
 │       ├── gstack-qa/
